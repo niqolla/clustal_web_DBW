@@ -25,8 +25,12 @@ SECRET_KEY = 'django-insecure-w16#ns2n32u-cs7lc%ulyq)xrmtq0r0r+dv3e379ep_qqi+n0p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    "https://formacio.bq.ub.edu",    
+    "http://0.0.0.0",
+    "http://localhost"
+]
 
 # Application definition
 

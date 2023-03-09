@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_protect, requires_csrf_token
 from django.http import HttpResponse
 from .forms import *
 import subprocess
@@ -95,6 +96,7 @@ def html_send_to_txt(html_send):
 #######################################################
 
 
+@requires_csrf_token
 def success_return_html(request, input_for_clusal, errors_list=[], format='clu'):
     result = subprocess.run(["clustalo", "-i", "-", f"--outfmt={format}"], input=input_for_clusal, capture_output=True, text=True)
     html_send = result_stdout_to_html_as_clustal(result.stdout, errors_list)
@@ -106,7 +108,7 @@ def success_return_html(request, input_for_clusal, errors_list=[], format='clu')
     context = {'html_send':html_send, 'stamp':stamp, 'output_txt':output_txt, 'format':format}
     return render(request, 'webapp/output.html', context)
 
-
+@requires_csrf_token
 def get_aln(request):
 
     form_uniprotIdForm = uniprotIdForm()

@@ -16,7 +16,7 @@ Once the sequences are aligned, the user is promted to a page where he can see t
 ## To run server locally
 
 * Create a conda environment and install the requirements.txt file (note, clustalo uses the conda channel *bioconda*)
-* Inside the clustal_web folder run:
+* Inside the project folder run:
 ```
 python manage.py runserver
 ```
